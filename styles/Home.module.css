@@ -1,0 +1,15 @@
+
+.column{
+    background-image: url('http://unsplash.it/1000/1000?random&gravity=center');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25vh;
+}
+.column2{
+    background-image: url('http://loremflickr.com/p/600/500/Nature');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25vh;
+}

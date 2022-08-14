@@ -5,7 +5,8 @@ import Frontend from '../../portfolio-nextapp/public/icons/programming.svg'
 import Books from '../../portfolio-nextapp/public/icons/books.svg'
 import Figma from '../../portfolio-nextapp/public/icons/figma.svg'
 import Reactlogo from '../../portfolio-nextapp/public/icons/react.svg'
-
+import styles from '../styles/Home.module.css'
+import {FaChevronRight} from 'react-icons/fa'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,7 +23,7 @@ export default function Home() {
     <Layout title="Home">
       <div className='mt-20'>
       <h1 className='font-bold text-3xl'>Hi Friends 👋</h1>
-      <p className='text-3xl font-light'>I'm Nandan, UX Designer & <br /> Frontend Developer</p>
+      <p className='text-3xl font-light'>I am Nandan, UX Designer and <br/> Frontend Developer</p>
       </div>
      
      {/* Subscribe */}
@@ -78,7 +79,7 @@ export default function Home() {
       {/* Budget App */}
       <div className='grid grid-cols-2 gap-3 pt-8'>
         {/* Image */}
-        <Image loader={myLoader} src={UX} alt="Budget App" width="120px" height="100px"/>
+        <Image loader={myLoader} src={UX} alt="Budget App" width="120px" height="200px"/>
         {/* Box Content */}
         <div className='pl-4'>
           <h1 className='font-bold text-xl text-gray-400'>Budget App</h1>
@@ -117,10 +118,51 @@ export default function Home() {
           </div>
         </div>
         {/* Image */}
-        <Image loader={myLoader} src={UX} alt="Budget App" width="120px" height="110px"/>
+        <Image loader={myLoader} src={UX} alt="Budget App" width="120px" height="200px"/>
       </div>
 
+      {/* More button */}
+        <Link href="/ux">
+          <div className='flex flex-row justify-end items-center pt-4 text-sm hover:underline'>
+          <button className='flex flex-row justify-end items-end'>More</button>
+          <FaChevronRight />
+          </div>
+        </Link>
+      
       </>
+      
+      {/* Visual Designs section */}
+      <>
+      <h1 className='font-bold text-3xl pt-16'><span className='font-light'>Visual</span> Designs  🖍️</h1>
+      <div className=" pt-6 grid grid-cols-3 gap-1">
+        <div className='grid col-span-2'>
+          <div className={styles.column}></div>
+        </div>
+        <div className=''>
+          <div className={styles.column2}></div>
+        </div>
+        <div className=''>
+          <div className={styles.column}></div>
+        </div>
+         <div className=''>
+          <div className={styles.column2}></div>
+        </div>
+        <div className=''>
+          <div className={styles.column}></div>
+        </div>
+        
+         
+      </div>
+      {/* More button */}
+        <Link href="/visualdesign">
+          <div className='flex flex-row justify-end items-center pt-4 text-sm hover:underline'>
+          <button className='flex flex-row justify-end items-end'>More</button>
+          <FaChevronRight />
+          </div>
+        </Link>
+      
+      </>
+      
 
       {/* Latest Articles */}
       <div className='grid grid-cols-3 gap-8'>
@@ -184,13 +226,13 @@ export default function Home() {
       {/* News Letter*/}
       <div className='bg-purple-500 mt-12 flex flex-col justify-center items-center'>
       <h1 className='font-bold text-3xl pt-12'><span className='font-light'>Subscribe to</span> Weekly Snippets  📮</h1>
-      <p className='text-sm text-white py-4 w-3/4'>
+      <p className='text-sm text-white py-4 w-3/4 text-center'>
         On this site we explore different processes in UX and best practices in Development and some side projects I do. I share weekly newsletters for in various tech topics. 
       </p>
       {/* Subscribe */}
       <div className=" mt-3  flex  flex-row  flex-wrap w-2/5 pb-12">
       <input type="text" className=" text-gray-600  w-2/3  p-2 rounded-r-none rounded-md" placeholder="Enter Email"/>
-      <button className=" p-2 w-1/3 bg-white rounded-l-none rounded-md  text-purple-500 font-semibold hover:bg-gray-400" type="button">Subscribe</button>
+      <button className=" p-2 w-1/3 bg-white rounded-l-none rounded-md  text-purple-500 font-semibold hover:bg-gray-400 hover:text-gray-800" type="button">Subscribe</button>
     </div>
       
       </div>
