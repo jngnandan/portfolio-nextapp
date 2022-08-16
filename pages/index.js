@@ -7,15 +7,18 @@ import Figma from '../../portfolio-nextapp/public/icons/figma.svg'
 import Reactlogo from '../../portfolio-nextapp/public/icons/react.svg'
 import styles from '../styles/Home.module.css'
 import {FaChevronRight} from 'react-icons/fa'
+import { MediumContext } from '../context/MediumContext'
+import { useContext } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
 
 export default function Home() {
+  const {posts} = useContext(MediumContext)
+  console.log(posts)
 
   const myLoader = ({ src, width, quality }) => {
-  // return `https://example.com/${src}?w=${width}&q=${quality || 75}`
   return `http://unsplash.it/600/500?random&gravity=center`
 }
 
