@@ -4,8 +4,9 @@ import {createContext, useEffect, useState} from 'react'
 const MediumContext = createContext()
 
 
-import {collection, getDocs, setDoc, doc, query} from 'firebase/firestore'
-import {db} from '../firebase'
+import {collection, getDocs, setDoc, doc, query, getFirestore} from 'firebase/firestore'
+import {db, auth, provider} from '../firebase'
+import { signInWithPopup } from 'firebase/auth'
 
 
 
@@ -13,6 +14,7 @@ const MediumProvider = ({children}) => {
     const [users, setUsers] = useState([])
     const [posts, setPosts] = useState([])
     const [books, setBooks] = useState([])
+    const [currentUser, setCurrentUser] = useState([])
 
     useEffect(() => {
     const getUsers = async () => {
@@ -64,8 +66,36 @@ useEffect(() => {
 }, [])
 
 
+
+const addUserToFirebase = async user => {
+    
+    const db = getFirestore();
+    const dbRef = collection(db, "users");
+    const data = {
+   email: user.email,
+    name: user.displayName,
+    imgUrl: user.photoURL,
+};
+    await setDoc(doc(dbRef, user.email), data);
+
+    // await setDoc(doc(db, 'users', user), {
+    //     email: user.email,
+    // })
+};
+
+
+const handleUserAuth = async () => {
+    const userData = await signInWithPopup(auth, provider)
+    const user = userData.user
+    console.log(user)
+    setCurrentUser(user)
+    addUserToFirebase(user)
+
+}
+
+
 return(
-    <MediumContext.Provider value={{users, posts, books}}>
+    <MediumContext.Provider value={{users, posts, books, currentUser, handleUserAuth}}>
         {children}
     </MediumContext.Provider>
 )
