@@ -15,7 +15,7 @@ import Link from 'next/link'
 
 
 export default function Home() {
-  const {posts, users} = useContext(MediumContext)
+  const {posts, users, books} = useContext(MediumContext)
   const myLoader = ({ src, width, quality }) => {
   return `http://unsplash.it/600/500?random&gravity=center`
 }
