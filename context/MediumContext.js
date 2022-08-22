@@ -77,7 +77,6 @@ const addUserToFirebase = async user => {
     imgUrl: user.photoURL,
 };
     await setDoc(doc(dbRef, user.email), data);
-
     // await setDoc(doc(db, 'users', user), {
     //     email: user.email,
     // })
@@ -90,7 +89,6 @@ const handleUserAuth = async () => {
     console.log(user)
     setCurrentUser(user)
     addUserToFirebase(user)
-
 }
 
 
