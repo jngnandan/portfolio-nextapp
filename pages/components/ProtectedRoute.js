@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 const ProtectedRoute = (props) => {
 //   const token = Cookies.get("jwt_token");
 const {currentUser} = useContext(MediumContext)
+const router = useRouter()
 if(currentUser === null){
       return router.push('/login')
     } else if (currentUser){

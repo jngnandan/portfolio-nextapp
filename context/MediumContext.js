@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {createContext, useEffect, useState} from 'react'
+import Router, { useRouter } from 'next/router'
 
 const MediumContext = createContext()
 
@@ -14,7 +15,7 @@ const MediumProvider = ({children}) => {
     const [users, setUsers] = useState([])
     const [posts, setPosts] = useState([])
     const [books, setBooks] = useState([])
-    const [currentUser, setCurrentUser] = useState([])
+    const [currentUser, setCurrentUser] = useState(null)
 
     useEffect(() => {
     const getUsers = async () => {
@@ -89,6 +90,9 @@ const handleUserAuth = async () => {
     console.log(user)
     setCurrentUser(user)
     addUserToFirebase(user)
+
+        const {pathname} = Router;
+        Router.push('/')
 }
 
 
