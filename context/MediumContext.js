@@ -95,9 +95,14 @@ const handleUserAuth = async () => {
         Router.push('/')
 }
 
+const signOut = () => {
+    // await auth.signOut()
+    setCurrentUser(null)
+}
+
 
 return(
-    <MediumContext.Provider value={{users, posts, books, currentUser, handleUserAuth}}>
+    <MediumContext.Provider value={{users, posts, books, currentUser, handleUserAuth, signOut}}>
         {children}
     </MediumContext.Provider>
 )

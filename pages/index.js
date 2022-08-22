@@ -15,7 +15,7 @@ import Link from 'next/link'
 
 
 export default function Home() {
-  const {posts, users, books} = useContext(MediumContext)
+  const {posts, users, books, currentUser} = useContext(MediumContext)
   const myLoader = ({ src, width, quality }) => {
   return `http://unsplash.it/600/500?random&gravity=center`
 }
@@ -43,30 +43,60 @@ export default function Home() {
         <h1 className='font-bold text-3xl pt-10'><span className='font-light'>A Better</span> Experience  🛠️</h1>
         <div className='grid grid-cols-4 gap-1 w-3/4 pt-6'>
           
+          {currentUser===null ?
+          <Link href="/signin">
+            <a className='text-center hover:underline'>
+              <Image src={VisualDesign} alt="UI" width="74px" height="74px"/>
+            <p className='text-sm text-gray-400 text-semibold'>Visual Design</p>
+            </a>
+          </Link> :
           <Link href="/visualdesign">
             <a className='text-center hover:underline'>
               <Image src={VisualDesign} alt="UI" width="74px" height="74px"/>
             <p className='text-sm text-gray-400 text-semibold'>Visual Design</p>
             </a>
-          </Link>
+          </Link>}
+          {currentUser==null ? 
+          <Link href="/signin">
+            <a className='text-center hover:underline'>
+              <Image src={UX} alt="UI" width="74px" height="74px"/>
+            <p className='text-sm text-gray-400 text-semibold'>User Experience</p>
+            </a>
+          </Link>:
           <Link href="/ux">
             <a className='text-center hover:underline'>
               <Image src={UX} alt="UI" width="74px" height="74px"/>
             <p className='text-sm text-gray-400 text-semibold'>User Experience</p>
             </a>
-          </Link>
+          </Link>}
+          {currentUser==null ? 
+          <Link href="/signin">
+            <a className='text-center hover:underline'>
+              <Image src={Frontend} alt="UI" width="74px" height="74px"/>
+            <p className='text-sm text-gray-400 text-semibold'>Frontend <br /> Development</p>
+            </a>
+          </Link> :
           <Link href="/frontend">
             <a className='text-center hover:underline'>
               <Image src={Frontend} alt="UI" width="74px" height="74px"/>
             <p className='text-sm text-gray-400 text-semibold'>Frontend <br /> Development</p>
             </a>
-          </Link>
-          <Link href="/books">
+          </Link>}
+          {currentUser==null ? 
+          <Link href="/signin">
             <a className='text-center hover:underline'>
               <Image src={Books} alt="UI" width="74px" height="74px"/>
             <p className='text-sm text-gray-400 text-semibold'>Book <br /> Summaries</p>
             </a>
           </Link>
+          : 
+          <Link href="/books">
+            <a className='text-center hover:underline'>
+              <Image src={Books} alt="UI" width="74px" height="74px"/>
+            <p className='text-sm text-gray-400 text-semibold'>Book <br /> Summaries</p>
+            </a>
+          </Link>}
+          
         </div>
       </>
     

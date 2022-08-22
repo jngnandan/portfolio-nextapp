@@ -7,16 +7,10 @@ import {ProtectedRoute} from '../components/ProtectedRoute'
 
 const Header = () => {
 
-  const {currentUser, handleUserAuth} = useContext(MediumContext)
+  const {currentUser, setCurrentUser, handleUserAuth, signOut} = useContext(MediumContext)
 
-  // useEffect(() => {
-  //   if(currentUser){
-  //     console.log(currentUser)
-  //   } else if (currentUser === null){
-  //     router.push('/')
-  //   }
-  // }, [currentUser])
   console.log(currentUser)
+
   return (
     <div className='flex flex-row justify-between items-center h-14 shadow bg-gray-900'>
         <div className='font-bold pl-5'>
@@ -35,7 +29,7 @@ const Header = () => {
             <li className='mx-2 pr-5 text-sm'>
             <button>
               {/* <Link href="/signin">Sign In</Link> */}
-              {currentUser==null ? <Link href="/signin">Sign In</Link> : <Link href="/signin">Sign In</Link>} 
+              {currentUser==null ? <Link href="/signin">Sign In</Link> : <button onClick={signOut}>Sign Out</button>} 
               
             </button>
             </li>
